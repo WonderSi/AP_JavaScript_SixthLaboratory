@@ -43,51 +43,55 @@ for (const char of s) {
 const percent = latinCount / s.length * 100;
 alert(`Доля латинских букв в процентах: ${percent}%`);
 // Example f
+const words = prompt('Введите строку:').toLowerCase().split(/\s+/)
+const uniqueWords = [... new Set(words)]
+alert(`Результат: ${uniqueWords.join('\t')}`)
+// Example g
+const n = parseInt(prompt('Введите количество чисел:'));
+const arr = Array.from({length: n}, () => Math.floor(Math.random() * 100) + 1);
+const reversed = arr.reverse();
 
+let output = '';
+for (let i = 0; i < reversed.length; i++) {
+    output += reversed[i] + ' ';
+    if ((i + 1) % 5 === 0 || i === reversed.length - 1) output += '\n';
+}
 
-// // f. Удаление повторяющихся слов
-// const words = prompt('Введите строку:').toLowerCase().split(/\s+/);
-// const uniqueWords = [...new Set(words)];
-// alert(`Результат: ${uniqueWords.join(' ')}`);
-//
-// // g. Вывод массива по 5 чисел
-// const n = parseInt(prompt('Введите n:'));
-// const arr = Array.from({length: n}, () => Math.floor(Math.random()*100));
-// let output = '';
-// arr.reverse().forEach((num, i) => {
-//     output += num + ((i+1)%5 === 0 ? '\n' : ' ');
-// });
-// alert(output);
-//
-// // h. Обработка матрицы
-// const size = parseInt(prompt('Введите порядок матрицы:'));
-// let matrix = Array.from({length: size}, () =>
-//     Array.from({length: size}, () => Math.floor(Math.random()*100)));
-//
-// let diagValues = [];
-// for (let i = 0; i < size; i++) {
-//     diagValues.push(matrix[i][i]);
-//     diagValues.push(matrix[i][size-1-i]);
-// }
-// const [minVal, maxVal] = [Math.min(...diagValues), Math.max(...diagValues)];
-//
-// for (let i = 0; i < size; i++) {
-//     if (matrix[i][i] !== minVal && matrix[i][i] !== maxVal) matrix[i][i] = 0;
-//     if (matrix[i][size-1-i] !== minVal && matrix[i][size-1-i] !== maxVal)
-//         matrix[i][size-1-i] = 0;
-// }
-//
-// // i. Добавление дней к дате
-// const daysToAdd = parseInt(prompt('Введите количество дней:'));
-// const date = new Date();
-// date.setDate(date.getDate() + daysToAdd);
-// alert(`Новая дата: ${date.toLocaleDateString()}`);
-//
-// // j. Месяцы до 1 сентября
-// const today = new Date();
-// let targetYear = today.getFullYear();
-// if (today > new Date(targetYear, 8, 1)) targetYear++;
-// const september = new Date(targetYear, 8, 1);
-// const months = (september.getMonth() - today.getMonth() +
-//     12*(september.getFullYear() - today.getFullYear())) % 12;
-// alert(`До 1 сентября осталось месяцев: ${months}`);
+alert(output);
+// Example h
+const n_ = parseInt(prompt('Введите количество чисел:'));
+const matrix = Array.from({length: n_},
+    () => Array.from({length: n_}, () => Math.floor(Math.random()*100)));
+
+const diag = [];
+for (let i = 0; i < n_; i++) {
+    diag.push(matrix[i][i]);
+    diag.push(matrix[i][n_-1-i]);
+}
+
+const max = Math.max(...diag);
+const min = Math.min(...diag);
+
+for (let i = 0; i < n_; i++) {
+    for (let j = 0; j < n_; j++) {
+        if (i === j || i + j === n_ - 1) {
+            if (matrix[i][j] !== max && matrix[i][j] !== min) {
+                matrix[i][j] = 0;
+            }
+        }
+    }
+}
+
+alert(matrix.map(row => row.join('\t')).join('\n'));
+// Example i
+const n__ = parseInt(prompt('Введите количестов дней:'));
+const date = new Date();
+date.setDate(date.getDate() + n);
+alert(date.toDateString())
+// Example j
+const today = new Date();
+let year = today.getFullYear();
+if (today > new Date(year, 8, 1)) year++;
+const target = new Date(year, 8, 1);
+const months = (target.getMonth() - today.getMonth() + 12) % 12;
+alert(`До сентября осталось ${months} месяц(-а/-ев)`);
