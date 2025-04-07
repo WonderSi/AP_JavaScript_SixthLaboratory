@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Создание списка</h1>
+<ul id="dynamic-list"></ul>
+
+<script>
+    const itemCount = parseInt(prompt('Введите количество пунктов списка:', '3'));
+
+    if (!isNaN(itemCount) && itemCount > 0) {
+        const list = document.getElementById("dynamic-list");
+
+        for (let i = 1; i <= itemCount; i++) {
+            const itemContent = prompt(`Введите содержимое для пункта ${i}:`, `Пункт ${i}`);
+
+            if (itemContent) {
+                const listItem = document.createElement("li");
+                listItem.textContent = itemContent;
+                list.appendChild(listItem);
+            }
+        }
+    } else {
+        alert("Вы ввели некорректное значение. Попробуйте снова.");
+    }
+</script>
+</body>
+</html>
