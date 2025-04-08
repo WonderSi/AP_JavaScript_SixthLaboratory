@@ -19,7 +19,7 @@ function createCard() {
     img.alt = 'Avatar';
 
     const randomName = generateRandomName();
-    paragraph.textContent = `Персона: ${randomName}`;
+    paragraph.textContent = `${randomName}`;
 
     description.appendChild(paragraph);
     card.append(img, description);
@@ -29,8 +29,8 @@ function createCard() {
 }
 
 function generateRandomName() {
-    const firstNames = ['Алексей', 'Мария', 'Иван', 'Ольга', 'Дмитрий', 'Екатерина'];
-    const lastNames = ['Смирнов', 'Иванова', 'Кузнецов', 'Попова', 'Соколов', 'Лебедева'];
+    const firstNames = ['Алексей', 'Мария', 'Иван', 'Ольга', 'Дмитрий', 'Екатерина', 'Антон', 'Светлана', 'Олег'];
+    const lastNames = ['Смирнов', 'Иванова', 'Кузнецов', 'Попова', 'Соколов', 'Лебедева', 'Козлов', 'Зюсько', 'Иванова'];
 
     const randomFirstName = firstNames[Math.floor(Math.random() * firstNames.length)];
     const randomLastName = lastNames[Math.floor(Math.random() * lastNames.length)];
